@@ -1,0 +1,45 @@
+@import "@fontsource/barlow/400.css";
+@import "@fontsource/barlow/500.css";
+@import "@fontsource/barlow/600.css";
+@import "@fontsource/barlow-condensed/600.css";
+@import "@fontsource/barlow-condensed/700.css";
+@import "tailwindcss";
+
+@theme {
+  --color-asphalt: #262a2e;
+  --color-asphalt-2: #353a40;
+  --color-concrete: #eef0f1;
+  --color-paper: #ffffff;
+  --color-ink: #1b1e21;
+  --color-muted: #5f666d;
+  --color-line: #d3d7da;
+  --color-signal: #f5c518;
+  --color-signal-deep: #d9a900;
+  --color-eu: #003399;
+  --color-danger: #b42318;
+  --color-ok: #1f7a4d;
+
+  --font-sans: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", system-ui, sans-serif;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-concrete text-ink font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+  /* widoczny fokus z klawiatury: żółty pierścień z ciemnym obrysem — czytelny na jasnym i ciemnym tle */
+  :focus-visible {
+    outline: 3px solid var(--color-signal);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--color-ink);
+    border-radius: 6px;
+  }
+  /* fokus ustawiany programowo na tytule kroku (dla czytników ekranu) — bez obrysu */
+  [tabindex="-1"]:focus { outline: none; box-shadow: none; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+}
